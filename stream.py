@@ -70,23 +70,20 @@ def main():
             break
 
         frame = cv2.resize(frame, (640, 480))
-        display_text = f"Camera {idx} - Press [w]↑ [s]↓ to switch, [q] to quit"
-        cv2.putText(frame, display_text, (10, 25),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
         cv2.imshow('Video Stream', frame)
 
         key = cv2.waitKey(1) 
         print(f"Key pressed: {key} ({chr(key & 0xFF) if key & 0xFF < 256 else 'Non-ASCII'})")
         if (key & 0xFF) == ord('q'):
             break
-        elif (key & 0xFF) == ord('w'):  # 上一個攝影機
+        elif (key & 0xFF) == ord('s'):  # 上一個攝影機
 
             idx = (idx - 1) % num_cameras 
             if idx < 1:
                 idx = num_cameras - 1
             stream.release()
             stream, selected_camera_url,ptz_url = open_stream(base_ip, idx)
-        elif (key & 0xFF)  == ord('s'):  # 下一個攝影機
+        elif (key & 0xFF)  == ord('w'):  # 下一個攝影機
             idx = (idx + 1) % num_cameras
             if idx < 1:
                 idx = 1
@@ -95,17 +92,17 @@ def main():
         elif key ==82:#up
             # 控制攝影機角度
             print(f"Controlling Camera {idx} at {selected_camera_url} with pan and tilt adjustments.")
-            ptz_control(ip=ptz_url, tilt=0.5)
+            ptz_control(ip=ptz_url, tilt=0.3)
         elif key== 84:  # down
-            ptz_control(ip=ptz_url, tilt=-0.5)
+            ptz_control(ip=ptz_url, tilt=-0.3)
         elif key== 81: # left
-            ptz_control(ip=ptz_url,pan=-0.5)
+            ptz_control(ip=ptz_url,pan=-0.3)
         elif key== 83: # right
-            ptz_control(ip=ptz_url,pan=0.5)
+            ptz_control(ip=ptz_url,pan=0.3)
         elif key == 61:  # zoom in
-            ptz_control(ip=ptz_url, zoom=0.2)
+            ptz_control(ip=ptz_url, zoom=0.1)
         elif key == 45:  # zoom out
-            ptz_control(ip=ptz_url, zoom=-0.2)
+            ptz_control(ip=ptz_url, zoom=-0.1)
     # Clean up
     stream.release()
     cv2.destroyAllWindows()
