@@ -70,6 +70,7 @@ def main():
             break
 
         frame = cv2.resize(frame, (640, 480))
+
         cv2.imshow('Video Stream', frame)
 
         key = cv2.waitKey(1) 

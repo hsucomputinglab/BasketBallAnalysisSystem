@@ -4,3 +4,5 @@ __pycache__/
 *.py[cod]
 #Ignore .pt
 *.pt
+# Ignore  runs/detect
+runs/detect/

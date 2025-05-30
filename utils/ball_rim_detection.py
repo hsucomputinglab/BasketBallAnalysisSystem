@@ -10,4 +10,4 @@ print(model.names)
 
 # inference
 source = os.path.join(os.getcwd(), "testing-datasets/side.mp4")
-results = model(source, save=True, conf=0.3, show_labels=True, boxes=True, show_conf=False, stream=False)
+results = model(source, save=True, conf=0.3, show_labels=True, boxes=True, show_conf=False, stream=True)
