@@ -70,7 +70,7 @@ See `requirements.txt` for the full list.
 ## Example
 
 After running the main script, you will get an output video with detected shots and ball trajectories visualized.
-
+[![Demo Video]](testing-datasets/output.mp4)
 ---
 
 **Note:** Make sure to provide your own video files and trained YOLO models for best results.
