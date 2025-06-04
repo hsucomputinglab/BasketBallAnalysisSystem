@@ -6,3 +6,4 @@ __pycache__/
 *.pt
 # Ignore  runs/detect
 runs/detect/
+BasketBall_Game-7
